@@ -13,10 +13,6 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/about')
-def about():
-    return 'About'
-
 def openAI(tweet, user):
   return (openai.ChatCompletion.create(
   model="gpt-3.5-turbo",

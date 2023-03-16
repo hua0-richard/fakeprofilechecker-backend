@@ -10,11 +10,6 @@ CORS(app)
 def about():
     return 'About'
 
-# flask imports
-from flask import Flask, jsonify, request
-from flask_cors import CORS, cross_origin
-import json
-
 # snscrape imports
 import snscrape.modules.twitter as sntwitter
 

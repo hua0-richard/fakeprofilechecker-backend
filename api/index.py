@@ -4,7 +4,7 @@ import json
 # snscrape imports
 import snscrape.modules.twitter as snreddit
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
 @app.route('/default')
 def home():
     return 'Hello, World!'

@@ -50,14 +50,15 @@ def hello_world():
         ## print(i[0])
         print(type(i[0]))
         temp = ""
-        if (type(i[0]) is snreddit.Comment):
-            print(i[0].body)
-            temp = i[0].body
-        elif (type(i[0]) is snreddit.Submission):
-            print(i[0].title)
-            temp = i[0].title
-        else:
-            temp = i[0]
+        # if (type(i[0]) is snreddit.Comment):
+        #     print(i[0].body)
+        #     temp = i[0].body
+        # elif (type(i[0]) is snreddit.Submission):
+        #     print(i[0].title)
+        #     temp = i[0].title
+        # else:
+        temp = i[1]
+        print(temp)
         retElement = {"content": temp, "user": i[1]}
         ret.append(retElement)
     return json.dumps(ret)

@@ -35,23 +35,3 @@ def findTweets(user):
             break
         attributes_container.append([reddit, reddit.author])
     return attributes_container
-
-@app.route("/default", methods=['POST'])
-def hello_world():
-    
-    attributes_container = findTweets(request.get_json()['test'])
-    ret = []
-    for i in attributes_container:
-        ## openAiResponse = openAI(i[3], request.get_json()['test']).choices[0].message.content
-        ## print(i[0])
-        print(type(i[0]))
-        temp = ""
-        if (type(i[0]) is snreddit.Comment):
-            print(i[0].body)
-            temp = i[0].body
-        elif (type(i[0]) is snreddit.Submission):
-            print(i[0].title)
-            temp = i[0].title
-        retElement = {"content": temp, "user": i[1]}
-        ret.append(retElement)
-    return json.dumps(ret)

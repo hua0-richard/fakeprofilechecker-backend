@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 # import snscrape.modules.reddit as snreddit
 app = Flask(__name__)
 # CORS(app)
-@app.route('/')
+@app.route('/default')
 def home():
     return 'Hello, World!'
 

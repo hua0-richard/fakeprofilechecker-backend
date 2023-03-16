@@ -1,7 +1,10 @@
-from flask import Flask
-
+from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
+import json
+# snscrape imports
+import snscrape.modules.reddit as snreddit
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/')
 def home():
     return 'Hello, World!'
@@ -9,14 +12,6 @@ def home():
 @app.route('/about')
 def about():
     return 'About'
-
-# flask imports
-from flask import jsonify, request
-from flask_cors import CORS, cross_origin
-import json
-
-# snscrape imports
-import snscrape.modules.reddit as snreddit
 
 #openAI imports
 # import openai
@@ -41,9 +36,6 @@ def findTweets(user):
             break
         attributes_container.append([reddit, reddit.author])
     return attributes_container
-
-app = Flask(__name__)
-CORS(app)
 
 
 @app.route("/default", methods=['POST'])

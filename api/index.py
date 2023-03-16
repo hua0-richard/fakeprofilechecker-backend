@@ -37,9 +37,10 @@ def findTweets(user):
     return attributes_container
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
+
 @app.route("/default", methods=['POST'])
 def hello_world():
-    
+    response.headers.add('Access-Control-Allow-Origin', '*')
     attributes_container = findTweets(request.get_json()['test'])
     ret = []
     for i in attributes_container:
@@ -59,5 +60,6 @@ def hello_world():
         print(i[6])
         retElement = {"likes": i[1], "source": i[2], "content": i[3], "media": temp, "analysis": openAiResponse, "user": i[5], 'profilepic': i[6]}
         ret.append(retElement)
+        ret.headers.add('Access-Control-Allow-Origin', '*')
     return json.dumps(ret)
 

@@ -27,11 +27,11 @@ def about():
 
 #     ]
 #     ))
-def findTweets(user):
-    attributes_container = []
-    # Using TwitterSearchScraper to scrape data and append tweets to list
-    for i,reddit in enumerate(snreddit.RedditUserScraper(user).get_items()):
-        if i>10:
-            break
-        attributes_container.append([reddit, reddit.author])
-    return attributes_container
+# def findTweets(user):
+#     attributes_container = []
+#     # Using TwitterSearchScraper to scrape data and append tweets to list
+#     for i,reddit in enumerate(snreddit.RedditUserScraper(user).get_items()):
+#         if i>10:
+#             break
+#         attributes_container.append([reddit, reddit.author])
+#     return attributes_container

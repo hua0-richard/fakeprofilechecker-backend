@@ -9,7 +9,7 @@ import openai
 openai.api_key = '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'
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "https://main--delicate-froyo-dda9bf.netlify.app/"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 

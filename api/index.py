@@ -7,8 +7,10 @@ import snscrape.modules.twitter as snreddit
 import openai
 #openAI key
 openai.api_key = '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'
+
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/about')
 def about():
@@ -33,6 +35,7 @@ def findTweets(user):
         attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content, tweet.media, tweet.user.username, tweet.user.profileImageUrl])
     return attributes_container
 
+@cross_origin()
 @app.route("/default", methods=['POST'])
 def hello_world():
     

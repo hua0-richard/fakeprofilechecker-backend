@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import json
 # snscrape imports
-import snscrape.modules.twitter as snreddit
+import snscrape.modules.twitter as sntwitter
 #openAI imports
 import openai
 #openAI key
@@ -35,7 +35,7 @@ def findTweets(user):
         attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content, tweet.media, tweet.user.username, tweet.user.profileImageUrl])
     return attributes_container
 
-@cross_origin()
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route("/default", methods=['POST'])
 def hello_world():
     

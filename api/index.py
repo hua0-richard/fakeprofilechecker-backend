@@ -2,9 +2,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import json
 # snscrape imports
-# import snscrape.modules.reddit as snreddit
+import snscrape.modules.reddit as snreddit
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 @app.route('/')
 def home():
     return 'Hello, World!'

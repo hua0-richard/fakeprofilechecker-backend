@@ -32,9 +32,9 @@ def findTweets(user):
         attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content, tweet.media, tweet.user.username, tweet.user.profileImageUrl])
     return attributes_container
 
-@cross_origin(origin='*',headers=['Content-Type'])
 
 @app.route("/default", methods=['POST'])
+@cross_origin(origin='*',headers=['Content-Type'])
 def hello_world():
     attributes_container = findTweets(request.get_json()['test'])
     ret = []

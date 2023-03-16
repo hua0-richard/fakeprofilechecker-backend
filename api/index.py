@@ -30,10 +30,10 @@ def about():
 def findTweets(user):
     attributes_container = []
     # Using TwitterSearchScraper to scrape data and append tweets to list
-    for i,reddit in enumerate(snreddit.RedditUserScraper(user).get_items()):
+    for i,reddit in enumerate(snreddit.TwitterUserScraper(user).get_items()):
         if i>10:
             break
-        attributes_container.append([reddit, reddit.author])
+        attributes_container.append([reddit, reddit.content])
     return attributes_container
 
 app = Flask(__name__)
@@ -56,6 +56,8 @@ def hello_world():
         elif (type(i[0]) is snreddit.Submission):
             print(i[0].title)
             temp = i[0].title
+        else:
+            temp = i[0]
         retElement = {"content": temp, "user": i[1]}
         ret.append(retElement)
     return json.dumps(ret)

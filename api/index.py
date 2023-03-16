@@ -42,9 +42,6 @@ def findTweets(user):
         attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content, tweet.media, tweet.user.username, tweet.user.profileImageUrl])
     return attributes_container
 
-app = Flask(__name__)
-CORS(app)
-
 @app.route("/default", methods=['POST'])
 def hello_world():
     

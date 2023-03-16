@@ -9,9 +9,7 @@ import openai
 openai.api_key = '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'
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
-
-app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app)
 
 def openAI(tweet, user):
   return (openai.ChatCompletion.create(
@@ -34,7 +32,6 @@ def findTweets(user):
 
 
 @app.route("/default", methods=['POST'])
-@cross_origin(origin='*',headers=['Content-Type'])
 def hello_world():
     attributes_container = findTweets(request.get_json()['test'])
     ret = []

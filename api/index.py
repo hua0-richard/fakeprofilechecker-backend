@@ -3,20 +3,16 @@ from flask_cors import CORS, cross_origin
 import json
 # snscrape imports
 import snscrape.modules.twitter as snreddit
+#openAI imports
+import openai
+#openAI key
+openai.api_key = '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'
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/about')
 def about():
     return 'About'
-
-# snscrape imports
-import snscrape.modules.twitter as sntwitter
-
-#openAI imports
-import openai
-#openAI key
-openai.api_key = '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'
 
 def openAI(tweet, user):
   return (openai.ChatCompletion.create(

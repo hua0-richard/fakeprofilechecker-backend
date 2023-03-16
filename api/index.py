@@ -53,6 +53,5 @@ def hello_world():
         print(i[6])
         retElement = {"likes": i[1], "source": i[2], "content": i[3], "media": temp, "analysis": openAiResponse, "user": i[5], 'profilepic': i[6]}
         ret.append(retElement)
-        ret.headers.add('Access-Control-Allow-Origin', '*')
     return json.dumps(ret)
 

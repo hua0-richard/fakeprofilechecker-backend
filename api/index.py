@@ -1,13 +1,15 @@
+#flask imports, cors imports
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import json
 # snscrape imports
 import snscrape.modules.twitter as sntwitter
-#openAI imports
+# openAI imports
+from prompts import API_KEY
 import openai
-#openAI key
-openai.api_key = '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'
-
+# openAI key
+openai.api_key = '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' 
+# CORS
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -18,7 +20,6 @@ def openAI(tweet, user):
   messages=[
         {"role": "user", "content": "The following tweet is from the user " + user},
         {"role": "user", "content": "If the tweet contains misleading information output #true. Otherwise, output #false.: " + tweet},
-
     ]
     ))
 

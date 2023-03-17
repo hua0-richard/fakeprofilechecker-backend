@@ -26,7 +26,7 @@ def findTweets(user):
     attributes_container = []
     # Using TwitterSearchScraper to scrape data and append tweets to list
     for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:' + user).get_items()):
-        if i>10:
+        if i>2:
             break
         attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content, tweet.media, tweet.user.username, tweet.user.profileImageUrl])
     return attributes_container

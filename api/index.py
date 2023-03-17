@@ -49,8 +49,9 @@ def hello_world():
                 else:
                     temp = ""
                 print (i[4][0])
-        openAiResponse = openAI(i[3], request.get_json()['test']).choices[0].message.content
-        print(i[6])
+        ##openAiResponse = openAI(i[3], request.get_json()['test']).choices[0].message.content
+        openAiResponse = ""
+        # print(i[6])
         retElement = {"likes": i[1], "source": i[2], "content": i[3], "media": temp, "analysis": openAiResponse, "user": i[5], 'profilepic': i[6]}
         ret.append(retElement)
     result = jsonify(ret)

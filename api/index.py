@@ -5,7 +5,6 @@ import json
 # snscrape imports
 import snscrape.modules.twitter as sntwitter
 # openAI imports
-from prompts import API_KEY
 import openai
 # openAI key
 openai.api_key = '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' 
@@ -54,5 +53,7 @@ def hello_world():
         print(i[6])
         retElement = {"likes": i[1], "source": i[2], "content": i[3], "media": temp, "analysis": openAiResponse, "user": i[5], 'profilepic': i[6]}
         ret.append(retElement)
-    return json.dumps(ret)
+    result = jsonify(ret)
+    result.headers.add("Access-Control-Allow-Origin", "*")
+    return result
 

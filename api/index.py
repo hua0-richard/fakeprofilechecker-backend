@@ -2,12 +2,19 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import json
+
 # snscrape imports
 import snscrape.modules.twitter as sntwitter
+
 # openAI imports
 import openai
+
 # openAI key
 openai.api_key = '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' 
+
+# timeout imports
+import signal
+
 # CORS
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
@@ -57,9 +64,15 @@ def hello_world():
     result = jsonify(ret)
     return result
 
-@app.route("/misInformation")
+@app.route("/misinformation", methods=['POST'])
 def misinfo():
-    return ""
+    content = request.get_json()['content']
+    user = request.get_json()['user']
+    print(user)
+    print(content)
+    openAiResponse = openAI(content, user).choices[0].message.content
+    print(openAiResponse)
+    return jsonify(openAiResponse)
 
 @app.route("/factCheck")
 def fact_check():

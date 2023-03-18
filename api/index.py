@@ -26,7 +26,7 @@ def findTweets(user):
     attributes_container = []
     # Using TwitterSearchScraper to scrape data and append tweets to list
     for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:' + user).get_items()):
-        if i>2:
+        if i>10:
             break
         attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content, tweet.media, tweet.user.username, tweet.user.profileImageUrl])
     return attributes_container
@@ -55,6 +55,12 @@ def hello_world():
         retElement = {"likes": i[1], "source": i[2], "content": i[3], "media": temp, "analysis": openAiResponse, "user": i[5], 'profilepic': i[6]}
         ret.append(retElement)
     result = jsonify(ret)
-    result.headers.add("Access-Control-Allow-Origin", "*")
     return result
 
+@app.route("/misInformation")
+def misinfo():
+    return ""
+
+@app.route("/factCheck")
+def fact_check():
+    return ""

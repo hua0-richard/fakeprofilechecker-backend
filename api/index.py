@@ -10,7 +10,7 @@ import snscrape.modules.twitter as sntwitter
 import openai
 
 # openAI key
-openai.api_key = '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' 
+openai.api_key = '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' 
 
 # timeout imports
 import signal

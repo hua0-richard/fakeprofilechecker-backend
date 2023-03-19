@@ -23,11 +23,32 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def openAI(tweet, user):
   return (openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
+  temperature=0,
   messages=[
         {"role": "user", "content": "The following tweet is from the user " + user},
-        {"role": "user", "content": "If the tweet contains misleading information output #true. Otherwise, output #false.: " + tweet},
-    ]
+        {"role": "user", "content": "If the tweet contains misleading information output #true. Otherwise, output #false: " + tweet},
+    ]   
     ))
+
+def openAIContext(tweet, user): 
+    return (openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    temperature=0,
+    messages=[
+            {"role": "user", "content": "The following tweet is from the user " + user},
+            {"role": "user", "content": "Explain the context of the tweet" + tweet},
+        ]   
+        ))
+
+def openAIExplainMisinfo(tweet, user):
+    return (openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    temperature=0,
+    messages=[
+            {"role": "user", "content": "The following tweet is from the user " + user},
+            {"role": "user", "content": "Explain why this twee contains misleading information" + tweet},
+        ]   
+        )) 
 
 def findTweets(user):
     attributes_container = []
